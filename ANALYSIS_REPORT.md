@@ -67,6 +67,8 @@ Kibana dashboards provide visual and summarized proof of the exfiltration event.
 
 ---
 
+## 4. Containment, Eradication, and Remediation
+
 ### 4.1 Containment Action
 The immediate containment was based on the confirmed 5-Tuple of the malicious connection. A firewall rule was implemented to block all future connections matching this 5-Tuple pattern, effectively cutting off the attacker's remote shell access.
 
@@ -86,3 +88,5 @@ Based on the findings of this incident, the following preventive actions are rec
 3.  **Regular Configuration Audits:** Implement a continuous auditing process for critical system files like `/etc/passwd` and `/etc/shadow` to detect unauthorized modifications (new users or altered permissions).
 4.  **Network Segmentation:** Isolate critical servers, like the compromised host, into separate network segments with strict ingress/egress filtering to limit lateral movement if a compromise occurs again.
 5.  **Monitor Command Execution:** Enhance logging and monitoring for suspicious command executions, specifically commands that manipulate core system files (`echo`, `cat /etc/shadow`, `vi /etc/passwd`).
+
+---

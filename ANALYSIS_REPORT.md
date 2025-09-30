@@ -1,6 +1,6 @@
 # Forensic Incident Analysis Report: The 5-Tuple Containment
 
-## Executive Summary
+## Executive Summary  
 
 A successful root-level compromise was detected on the host 209.165.200.235, originating from 209.165.201.17. The attacker achieved **privilege escalation**, established **persistence** by injecting a backdoor user (`myroot`), and successfully executed **data exfiltration** of a sensitive file (`confidential.txt`) via FTP.
 
@@ -85,3 +85,4 @@ A firewall rule was implemented to block all future connections matching this 5-
 1.  **Backdoor Removal:** The malicious user entry **`myroot`** was immediately deleted from `/etc/passwd` and `/etc/shadow` files to remove persistence.
 2.  **Credential Reset:** All known or potentially compromised user passwords, including `root` and `analyst`, were immediately reset.
 3.  **Vulnerability Patching:** The underlying vulnerability that allowed the initial root access (GPL ATTACK) was identified and patched.
+

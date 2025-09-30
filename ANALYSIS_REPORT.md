@@ -67,22 +67,22 @@ Kibana dashboards provide visual and summarized proof of the exfiltration event.
 
 ---
 
-## 4. Containment, Eradication, and Remediation
-
 ### 4.1 Containment Action
-
-The immediate containment was based on the confirmed 5-Tuple of the malicious connection:
-- **Source IP:** 209.165.201.17
-- **Source Port:** (Dynamic, but tied to the connection)
-- **Destination IP:** 209.165.200.235 (Compromised Host)
-- **Destination Port:** 6200 (Initial connection port)
-- **Protocol:** TCP
-
-A firewall rule was implemented to block all future connections matching this 5-Tuple pattern, effectively cutting off the attacker's remote shell access.
+The immediate containment was based on the confirmed 5-Tuple of the malicious connection. A firewall rule was implemented to block all future connections matching this 5-Tuple pattern, effectively cutting off the attacker's remote shell access.
 
 ### 4.2 Eradication and Remediation Steps
-
 1.  **Backdoor Removal:** The malicious user entry **`myroot`** was immediately deleted from `/etc/passwd` and `/etc/shadow` files to remove persistence.
 2.  **Credential Reset:** All known or potentially compromised user passwords, including `root` and `analyst`, were immediately reset.
 3.  **Vulnerability Patching:** The underlying vulnerability that allowed the initial root access (GPL ATTACK) was identified and patched.
 
+---
+
+## 5. Recommendations (Preventive Measures)
+
+Based on the findings of this incident, the following preventive actions are recommended to enhance the security posture:
+
+1.  **Enforce Strong Password Policies:** Implement multi-factor authentication (MFA) and regularly audit the use of common or default credentials, particularly for administrative accounts and services like FTP.
+2.  **Principle of Least Privilege (PoLP):** Review user privileges to ensure that accounts only have the minimum permissions necessary for their tasks. The use of a **non-root** account for file transfer services should be enforced.
+3.  **Regular Configuration Audits:** Implement a continuous auditing process for critical system files like `/etc/passwd` and `/etc/shadow` to detect unauthorized modifications (new users or altered permissions).
+4.  **Network Segmentation:** Isolate critical servers, like the compromised host, into separate network segments with strict ingress/egress filtering to limit lateral movement if a compromise occurs again.
+5.  **Monitor Command Execution:** Enhance logging and monitoring for suspicious command executions, specifically commands that manipulate core system files (`echo`, `cat /etc/shadow`, `vi /etc/passwd`).

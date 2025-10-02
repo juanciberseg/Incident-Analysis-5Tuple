@@ -14,9 +14,10 @@ The analysis covers the complete **Kill Chain**: Initial Access (Root), Persiste
 
 ## Documentation
 - **[Analysis Report](ANALYSIS_REPORT.md)**: Detailed report with all findings, evidence links, and recommendations.
-- **Evidence/**: Contains 10 highlighted screenshots from Sguil, Wireshark, and Kibana.
+- **[Evidence Folder](Evidence/)**: Contains 10 highlighted screenshots from Sguil, Wireshark, and Kibana.
 
 ---
 
 ## License
 This project is licensed under the **[MIT License](LICENSE)**.
+
